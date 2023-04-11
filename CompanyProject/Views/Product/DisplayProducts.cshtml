@@ -1,0 +1,38 @@
+﻿@model IEnumerable< CompanyProject.Models.Product>
+
+@{
+    ViewBag.Title = "DisplayProducts";
+}
+
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Display Products</h2>
+<table border="1" align="center">
+    <tr>
+        <th>@Html.DisplayNameFor(P => P.ProductId)</th>
+        <th>@Html.DisplayNameFor(P => P.ProductName)</th>
+        
+        
+        <th>@Html.DisplayNameFor(P => P.CategoryId)</th>
+        <th>@Html.DisplayNameFor(P => P.Category.CategoryName)</th>
+        <th>Actions</th>
+    </tr>
+    @foreach (var Product in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(P => Product.ProductId)</td>
+            <td>@Html.DisplayFor(P => Product.ProductName)</td>
+            
+            
+            <td>@Html.DisplayFor(P => Product. ProductId)</td>
+            <td>@Html.DisplayFor(P => Product.Category.CategoryName)</td>
+           
+            <td>
+                @Html.ActionLink("View", "DisplayProduct", new { Id = Product.ProductId })
+                @Html.ActionLink("Edit", "EditProduct", new { Id = Product.ProductId })
+                @Html.ActionLink("Delete", "DeleteProduct", new { Id = Product.ProductId },
+                            new { onclick = "return confirm('Are you sure of deleting the record?')" })
+            </td>
+        </tr>
+    }
+    <tr><td colspan="9" align="center">@Html.ActionLink("Add New Product", "AddProduct")</td></tr>
+</table>
+
